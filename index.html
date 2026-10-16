@@ -548,10 +548,10 @@ input[type="range"], input[type="number"] {
       <div class="browser-frame">
         <div class="browser-bar">
           <div class="browser-dots"><i></i><i></i><i></i></div>
-          <div class="browser-url">https://ontime.by — Главный экран платформы</div>
+          <div class="browser-url">https://on-time.by — Главный экран платформы</div>
         </div>
-        <div class="photo-slot" data-slot="hero-main">
-          <img src="" alt="Главный экран сайта OnTime">
+        <div class="photo-slot has-image" data-slot="hero-main" data-default-src="main.png">
+          <img src="main.png" alt="Главный экран сайта OnTime">
           <div class="slot-placeholder">
             <div class="slot-icon">＋</div>
             <div class="slot-title">Вставьте скриншот главного экрана</div>
@@ -870,9 +870,10 @@ function readImageFile(file, slot) {
 function clearSavedPhotos() {
   document.querySelectorAll('.photo-slot').forEach(slot => {
     localStorage.removeItem('ontime_short_img_' + slot.dataset.slot);
-    slot.classList.remove('has-image');
     const img = slot.querySelector('img');
-    if (img) img.src = '';
+    const fallback = slot.dataset.defaultSrc || '';
+    if (img) img.src = fallback;
+    slot.classList.toggle('has-image', !!fallback);
   });
 }
 
