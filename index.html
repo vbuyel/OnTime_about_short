@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>OnTime — О платформе</title>
+<title>OnTime — Критерии оценки стартап-проекта</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -205,6 +205,7 @@ html, body {
 .slide.active .stagger > *:nth-child(3) { transition-delay: .22s; }
 .slide.active .stagger > *:nth-child(4) { transition-delay: .30s; }
 .slide.active .stagger > *:nth-child(5) { transition-delay: .38s; }
+.slide.active .stagger > *:nth-child(6) { transition-delay: .46s; }
 
 h1, h2, h3 {
   font-weight: 300;
@@ -220,6 +221,66 @@ p { color: var(--mut); }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
 .grid-2-asym { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 32px; align-items: center; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.crit-tag {
+  font: 600 11px 'Inter', sans-serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--teal-d);
+  background: var(--teal-l);
+  padding: 5px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.stage-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.stage-step {
+  flex: 1;
+  min-width: 120px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--tp);
+  border: 1px solid var(--line);
+  text-align: center;
+}
+.stage-step.done {
+  background: var(--teal-l);
+  border-color: #bce0e0;
+}
+.stage-step.now {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.stage-step.now p { color: #bdb7ae; }
+.stage-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: .7;
+}
+.stage-step h3 { font-size: 15px; font-weight: 500; }
+.comp-row-mini {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 1.3fr;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--tp);
+  align-items: start;
+}
+.comp-row-mini.ontime {
+  background: var(--teal-l);
+  border: 1px solid #bce0e0;
+}
 
 .card {
   background: rgba(255, 255, 255, 0.9);
@@ -501,7 +562,7 @@ input[type="range"], input[type="number"] {
 
 @media (max-width: 960px) {
   .slide { padding: 20px; }
-  .grid-2, .grid-2-asym, .grid-3, .fintech-flow { grid-template-columns: 1fr; }
+  .grid-2, .grid-2-asym, .grid-3, .grid-4, .grid-5, .fintech-flow, .comp-row-mini { grid-template-columns: 1fr; }
   .nav-dots { display: none; }
 }
 </style>
@@ -526,11 +587,11 @@ input[type="range"], input[type="number"] {
 
 <main class="deck" id="deck">
 
-  <!-- СЛАЙД 1: ПРИВЕТСТВЕННЫЙ -->
+  <!-- 1. ПРИВЕТСТВЕННЫЙ -->
   <section class="slide active" data-title="1. Добро пожаловать" data-orb-x="0.72" data-orb-y="0.5" data-orb-s="260" data-orb-h="0.45">
     <div class="slide-inner grid-2-asym stagger">
       <div>
-        <div class="eyebrow">Платформа автоматизации услуг · B2B & B2C</div>
+        <div class="eyebrow">Платформа автоматизации услуг · B2B &amp; B2C</div>
         <h1>Онлайн-запись, которая работает на клиента и на бизнес</h1>
         <p class="lead" style="margin-top:20px">
           OnTime — платформа для салонов, барбершопов и сервисных бизнесов: запись без звонков, защита расписания и AI-визуализация результата до визита.
@@ -541,7 +602,7 @@ input[type="range"], input[type="number"] {
           <span class="pill"><i style="background:var(--ink)"></i> Платежи без потерь</span>
         </div>
         <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap">
-          <button class="btn k" onclick="nextSlide()">Главные идеи →</button>
+          <button class="btn k" onclick="nextSlide()">Критерии оценки →</button>
         </div>
       </div>
 
@@ -563,157 +624,127 @@ input[type="range"], input[type="number"] {
     </div>
   </section>
 
-  <!-- СЛАЙД 2: ГЛАВНЫЕ ИДЕИ -->
-  <section class="slide" data-title="2. Главные идеи" data-orb-x="0.5" data-orb-y="0.25" data-orb-s="200" data-orb-h="0.7">
+  <!-- 2. АКТУАЛЬНОСТЬ + ПОТЕНЦИАЛ РЫНКА -->
+  <section class="slide" data-title="2. Актуальность и рынок" data-orb-x="0.5" data-orb-y="0.25" data-orb-s="200" data-orb-h="0.7">
     <div class="slide-inner stagger">
-      <div>
-        <div class="eyebrow">Главные идеи</div>
-        <h2>Что решает OnTime</h2>
-        <p class="lead" style="margin-top:10px">
-          Одна платформа закрывает боли клиента и бизнеса — от записи до оплаты и аналитики.
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px">
+        <div>
+          <div class="eyebrow coral">Критерии 1–2</div>
+          <h2>Актуальность и потенциал рынка</h2>
+        </div>
+        <p class="lead" style="margin:0; max-width:420px">
+          Рынок услуг теряет выручку каждый день — OnTime закрывает боли клиента и бизнеса с масштабом от beauty РБ до любой ниши по времени.
         </p>
       </div>
 
-      <div class="grid-2" style="margin-top:24px; align-items:stretch">
-        <div class="card" style="border-top: 4px solid var(--coral)">
-          <span class="logo-pill" style="background:var(--coral-l); color:#a4482c">Для клиента (B2C)</span>
-          <div class="idea-list">
+      <div class="grid-2" style="margin-top:20px; align-items:stretch; gap:16px">
+        <div class="card" style="border-top:4px solid var(--coral)">
+          <span class="crit-tag" style="background:var(--coral-l); color:#a4482c">1 · Актуальность</span>
+          <h3 style="font-size:18px; margin-bottom:12px">Почему проект нужен сейчас</h3>
+          <div class="idea-list" style="margin-top:0">
             <div class="idea-item">
-              <div class="idea-num" style="background:var(--coral)">1</div>
+              <div class="idea-num" style="background:var(--coral)">B2C</div>
               <div>
-                <h3 style="font-size:17px">Запись в два клика</h3>
-                <p style="font-size:14px; margin-top:4px">Выбор услуги, мастера и времени онлайн — без звонков и ожидания ответа.</p>
+                <h3 style="font-size:15px">Страх и сложность записи</h3>
+                <p style="font-size:13px; margin-top:2px">До 76% клиентов — стресс от звонков, ожидания и непредсказуемого результата. Нет удобной записи 24/7 и визуализации «на себе» до визита.</p>
               </div>
             </div>
             <div class="idea-item">
-              <div class="idea-num" style="background:var(--coral)">2</div>
+              <div class="idea-num">B2B</div>
               <div>
-                <h3 style="font-size:17px">AI Камера до визита</h3>
-                <p style="font-size:14px; margin-top:4px">Клиент заранее видит желаемый результат на себе — меньше страха и неопределенности.</p>
-              </div>
-            </div>
-            <div class="idea-item">
-              <div class="idea-num" style="background:var(--coral)">3</div>
-              <div>
-                <h3 style="font-size:17px">Напоминания и история</h3>
-                <p style="font-size:14px; margin-top:4px">Автоуведомления и личный кабинет с прошлыми визитами.</p>
+                <h3 style="font-size:15px">Неявки и устаревший софт</h3>
+                <p style="font-size:13px; margin-top:2px">37.6% неявок — без автонапоминаний; до 45% выручки МСБ теряется из‑за отмен, накладок и ошибок админов.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="card" style="border-top: 4px solid var(--teal)">
-          <span class="logo-pill">Для бизнеса (B2B)</span>
-          <div class="idea-list">
-            <div class="idea-item">
-              <div class="idea-num">1</div>
-              <div>
-                <h3 style="font-size:17px">Защита расписания</h3>
-                <p style="font-size:14px; margin-top:4px">Алгоритм дедлайна подтверждения: незакрытые заявки не блокируют окно мастера.</p>
-              </div>
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <span class="crit-tag">2 · Потенциал рынка</span>
+          <h3 style="font-size:18px; margin-bottom:12px">Масштаб и экономика</h3>
+          <div class="grid-2" style="gap:10px; align-items:stretch">
+            <div style="padding:12px 14px; border-radius:14px; background:var(--tp)">
+              <div class="big-stat teal" style="font-size:32px; margin:0">7 000</div>
+              <p style="font-size:12px; margin-top:2px">салонов в РБ · цель 3 000</p>
             </div>
-            <div class="idea-item">
-              <div class="idea-num">2</div>
-              <div>
-                <h3 style="font-size:17px">Меньше неявок</h3>
-                <p style="font-size:14px; margin-top:4px">Автонапоминания снижают пропуски визитов и простои персонала.</p>
-              </div>
+            <div style="padding:12px 14px; border-radius:14px; background:var(--tp)">
+              <div class="big-stat ink" style="font-size:32px; margin:0">$140k</div>
+              <p style="font-size:12px; margin-top:2px">gross / мес на одной нише</p>
             </div>
-            <div class="idea-item">
-              <div class="idea-num">3</div>
-              <div>
-                <h3 style="font-size:17px">Аналитика и интеграции</h3>
-                <p style="font-size:14px; margin-top:4px">Выручка, загрузка, Google Calendar, Telegram и Email в одном контуре.</p>
-              </div>
+            <div style="padding:12px 14px; border-radius:14px; background:var(--tp)">
+              <div class="big-stat" style="font-size:32px; margin:0">$30k+</div>
+              <p style="font-size:12px; margin-top:2px">net profit / мес</p>
+            </div>
+            <div style="padding:12px 14px; border-radius:14px; background:var(--teal-l)">
+              <div class="big-stat teal" style="font-size:32px; margin:0">~90</div>
+              <p style="font-size:12px; margin-top:2px; color:var(--teal-d)">BYN B2B-чек / мес</p>
             </div>
           </div>
+          <p style="font-size:12px; margin-top:12px">Расширение: beauty → медицина → спорт → эксперты и ИП.</p>
         </div>
-      </div>
-
-      <div class="card dark" style="margin-top:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding:22px 32px">
-        <div style="display:flex; align-items:center; gap:14px">
-          <span style="width:12px; height:12px; border-radius:50%; background:var(--teal); display:inline-block; box-shadow:0 0 12px var(--teal)"></span>
-          <span style="font-size:18px; font-weight:400">Первые B2B клиенты уже готовы к интеграции платформы</span>
-        </div>
-        <span class="logo-pill" style="background:var(--teal); color:#fff">Traction Ready</span>
       </div>
     </div>
   </section>
 
-  <!-- СЛАЙД 3: КАК РАБОТАЕТ + КОМИССИЯ -->
-  <section class="slide" data-title="3. Платежи и комиссия" data-orb-x="0.55" data-orb-y="0.5" data-orb-s="230" data-orb-h="0.55">
+  <!-- 3. КОНКУРЕНТОСПОСОБНОСТЬ + СТАДИЯ + ОПЫТ -->
+  <section class="slide" data-title="3. Результат, стадия, опыт" data-orb-x="0.55" data-orb-y="0.5" data-orb-s="230" data-orb-h="0.55">
     <div class="slide-inner stagger">
-      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px">
-        <div>
-          <div class="eyebrow">Платежи без скрытых потерь</div>
-          <h2>Комиссия платформы</h2>
-          <p class="lead" style="margin-top:10px">
-            Клиент платит онлайн. Организация получает 100% стоимости услуги. Эквайринг берёт на себя платформа.
-          </p>
-        </div>
-        <div style="background:#fff; padding:12px 18px; border-radius:16px; border:1px solid var(--line); display:flex; align-items:center; gap:12px; flex-wrap:wrap">
-          <span style="font-size:13px; color:var(--mut)">Стоимость услуги:</span>
-          <input type="number" id="fin-price" value="100" min="1" max="5000" step="1" style="width:85px; padding:6px 10px; border:1px solid var(--line); border-radius:8px; font:600 15px Inter" oninput="updateFintech()">
-          <span style="font-weight:600">BYN</span>
-          <button class="btn teal" onclick="pulseFintech()">Рассчитать →</button>
-        </div>
+      <div>
+        <div class="eyebrow">Критерии 3–5</div>
+        <h2>Конкурентоспособность, стадия и опыт команды</h2>
       </div>
 
-      <div class="card soft" style="margin-top:20px; padding:18px 24px">
-        <h3 style="font-size:18px">Формула комиссии</h3>
-        <p style="margin-top:6px; font-size:16px; color:var(--ink)">
-          <b>max(0.99&nbsp;BYN;&nbsp;3.5% от стоимости услуги)</b>
-        </p>
-        <p style="margin-top:4px; font-size:13px" id="fin-formula-note">
-          При услуге 100 BYN: 3.5% = 3.50 BYN → комиссия = 3.50 BYN
-        </p>
-      </div>
-
-      <div class="fintech-flow" id="fintech-flow">
-        <div class="card">
-          <span class="logo-pill">Клиент платит</span>
-          <h3 style="margin-top:12px; font-size:22px">Итого к оплате</h3>
-          <div class="big-stat ink" style="font-size:42px; margin:12px 0" id="fin-total">103.50 BYN</div>
-          <p style="font-size:14px">
-            Услуга + комиссия платформы. Банк расщепляет платёж на два IBAN в момент Capture.
-          </p>
+      <div class="grid-3" style="margin-top:18px; align-items:stretch; gap:14px">
+        <div class="card" style="border-top:4px solid var(--teal)">
+          <span class="crit-tag">3 · Конкурентоспособность</span>
+          <h3 style="font-size:16px; margin-bottom:10px">Сильнее Zen24 и Bitrix24</h3>
+          <div style="display:grid; gap:8px">
+            <div style="padding:10px 12px; border-radius:12px; background:var(--tp); font-size:13px">
+              <b>Zen24</b> — сбои, плавающие SMS-оплаты
+            </div>
+            <div style="padding:10px 12px; border-radius:12px; background:var(--tp); font-size:13px">
+              <b>Bitrix24</b> — перегруз UI, только B2B
+            </div>
+            <div style="padding:10px 12px; border-radius:12px; background:var(--teal-l); font-size:13px; color:var(--teal-d)">
+              <b>OnTime</b> — AI Камера, защита расписания, фикс. тариф + комиссия с клиента (организация получает 100% цены)
+            </div>
+          </div>
         </div>
 
-        <div class="flow-arrow">➔</div>
-
-        <div class="card teal-tint">
-          <span class="logo-pill" style="background:#fff">Организация</span>
-          <h3 style="margin-top:12px; font-size:22px">100% услуги</h3>
-          <div class="big-stat teal" style="font-size:42px; margin:12px 0" id="fin-biz">100 BYN</div>
-          <p style="font-size:14px; color:var(--teal-d)">
-            Бизнес получает полную стоимость услуги — без удержания эквайринга.
-          </p>
+        <div class="card" style="border-top:4px solid var(--coral)">
+          <span class="crit-tag" style="background:var(--coral-l); color:#a4482c">4 · Стадия и результаты</span>
+          <h3 style="font-size:16px; margin-bottom:10px">MVP готов → пилоты B2B</h3>
+          <div class="stage-bar" style="margin-top:0; flex-direction:column; gap:6px">
+            <div class="stage-step done" style="text-align:left; padding:10px 12px">
+              <h3 style="font-size:13px">✓ Идея · ✓ MVP (сайт, AI, платежи)</h3>
+            </div>
+            <div class="stage-step now" style="text-align:left; padding:10px 12px">
+              <h3 style="font-size:13px">→ Пилоты: клиенты готовы к интеграции</h3>
+            </div>
+            <div class="stage-step" style="text-align:left; padding:10px 12px">
+              <h3 style="font-size:13px">Далее: масштаб beauty РБ → $30k+ net</h3>
+            </div>
+          </div>
+          <p style="font-size:12px; margin-top:10px">Реализовано: запись B2C/B2B, AI, Calendar/Telegram, fintech-схема.</p>
         </div>
 
-        <div class="flow-arrow">＋</div>
-
-        <div class="card coral-tint">
-          <span class="logo-pill" style="background:#fff; color:#a4482c">OnTime</span>
-          <h3 style="margin-top:12px; font-size:22px">Комиссия</h3>
-          <div class="big-stat" style="font-size:42px; margin:12px 0" id="fin-fee">3.50 BYN</div>
-          <p style="font-size:14px; color:#6e4335">
-            Из комиссии оплачивается банковский эквайринг; остаток — доход платформы.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid-3" style="margin-top:20px; align-items:stretch">
-        <div class="card soft" style="padding:18px 20px">
-          <h3 style="font-size:16px">Минимум 0.99 BYN</h3>
-          <p style="font-size:13px; margin-top:4px">На недорогих услугах комиссия не падает ниже 0.99 BYN.</p>
-        </div>
-        <div class="card soft" style="padding:18px 20px">
-          <h3 style="font-size:16px">Или 3.5% от услуги</h3>
-          <p style="font-size:13px; margin-top:4px">На более дорогих услугах берётся 3.5% от стоимости сервиса.</p>
-        </div>
-        <div class="card soft" style="padding:18px 20px">
-          <h3 style="font-size:16px">Платит клиент</h3>
-          <p style="font-size:13px; margin-top:4px">Организация не теряет процент с чека — только 100% своей цены.</p>
+        <div class="card dark" style="border-top:4px solid var(--teal)">
+          <span class="logo-pill" style="background:var(--teal); color:#fff">5 · Опыт команды</span>
+          <h3 style="font-size:16px; margin:12px 0 10px; color:#fff">End-to-end поставка SaaS</h3>
+          <div style="display:grid; gap:10px">
+            <div style="padding:10px 12px; background:#191919; border-radius:12px; border:1px solid #2c2c2c">
+              <b style="color:#fff; font-size:14px">Владислав Буель</b>
+              <div style="font-size:12px; color:#aaa; margin-top:2px">Co-Founder · Software Engineer</div>
+            </div>
+            <div style="padding:10px 12px; background:#191919; border-radius:12px; border:1px solid #2c2c2c">
+              <b style="color:#fff; font-size:14px">Михаил Паньков</b>
+              <div style="font-size:12px; color:#aaa; margin-top:2px">Co-Founder · Юрист</div>
+            </div>
+          </div>
+          <p style="font-size:12px; margin-top:12px">Сами собрали полный стек; первые B2B готовы к пилотам.</p>
+          <div style="margin-top:12px">
+            <span class="logo-pill" style="background:var(--teal); color:#fff">Traction Ready</span>
+          </div>
         </div>
       </div>
     </div>
@@ -730,7 +761,7 @@ input[type="range"], input[type="number"] {
 </div>
 
 <footer class="bottombar">
-  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:33.33%"></div></div>
   <div>
     <span id="slide-counter" style="font-weight:600; color:var(--ink)">01 / 03</span>
     <span style="margin-left:12px" id="slide-title-lbl">1. Добро пожаловать</span>
@@ -876,40 +907,6 @@ function clearSavedPhotos() {
     slot.classList.toggle('has-image', !!fallback);
   });
 }
-
-/** Комиссия: max(0.99 BYN; 3.5% от стоимости услуги) */
-function platformFee(price) {
-  return Math.max(0.99, price * 0.035);
-}
-
-function fmtByn(n) {
-  return n.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' BYN';
-}
-
-function updateFintech() {
-  const price = Math.max(0, +document.getElementById('fin-price').value || 0);
-  const pct = price * 0.035;
-  const fee = platformFee(price);
-  const total = price + fee;
-
-  document.getElementById('fin-total').textContent = fmtByn(total);
-  document.getElementById('fin-biz').textContent = fmtByn(price);
-  document.getElementById('fin-fee').textContent = fmtByn(fee);
-
-  const winner = fee === 0.99 && pct <= 0.99
-    ? `При услуге ${fmtByn(price)}: 3.5% = ${fmtByn(pct)} → берём минимум 0.99 BYN`
-    : `При услуге ${fmtByn(price)}: 3.5% = ${fmtByn(pct)} → комиссия = ${fmtByn(fee)}`;
-  document.getElementById('fin-formula-note').textContent = winner;
-}
-
-function pulseFintech() {
-  const fl = document.getElementById('fintech-flow');
-  fl.classList.add('pulsing');
-  setTimeout(() => fl.classList.remove('pulsing'), 600);
-  updateFintech();
-}
-
-updateFintech();
 
 try {
   const canvas = document.getElementById('orb-canvas');
